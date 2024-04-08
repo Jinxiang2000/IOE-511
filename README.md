@@ -35,6 +35,6 @@ To use our optimization package, ensure you have Matlab installed on your system
 
 Refer to our comments for detailed information on each parameter and default values.
 
-## Impact of Memory on Quasi-Newton Methods
+## Impact of Memory Size on Quasi-Newton Methods
 
-Our project delves into the effect of memory management on the performance of quasi-Newton methods, answering critical questions about how historical data influences convergence and efficiency.
+Our project delves into the effect of memory on the performance of quasi-Newton methods(e.g. L-BFGS), answering critical questions about how memory size influences convergence and efficiency.
