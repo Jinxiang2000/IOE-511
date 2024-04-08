@@ -1,5 +1,5 @@
 % IOE 511/MATH 562, University of Michigan
-% Code written by: Yubo Shao
+% Code written by: Yubo Shao, Jinxiang Ma
 
 % Function that runs a chosen algorithm on a chosen problem
 %           Inputs: problem, method, options (structs)
@@ -32,8 +32,9 @@ function [x,f] = optSolver_JEKY(problem,method,options)
           rho = [];
       %case {'TRNewtonCG', 'TRSR1CG'}
 
-      %case {'DFP', 'DFPW'}
-          
+      case {'DFP', 'DFPW'}
+          %D is the inverse Hessian Approximation
+          D = eye(length(x));
       otherwise
           error('Method not implemented yet!')
   end
@@ -61,13 +62,11 @@ function [x,f] = optSolver_JEKY(problem,method,options)
         case 'BFGS'
             [x,f,g,H] = BFGS(x,g,H,problem,method,options);
         case 'BFGSW'
-            [x,f,g,H] = BFGSW(x,g,H,problem,method,options);  
-        %{    
+            [x,f,g,H] = BFGSW(x,g,H,problem,method,options);    
         case 'DFP'
-            [] = DFP();
+            [x, f, g, D] = DFP(x, g, D, problem, method, options);
         case 'DFPW'
-            [] = DFPW();  
-        %}    
+            [x, f, g, D] = DFPW(x, g, D, problem, method, options);   
         case 'L_BFGS'
             [x,f,g,S,Y,rho] = L_BFGS(x,g,S,Y,rho,problem,method,options);   
         case 'L_BFGSW'
