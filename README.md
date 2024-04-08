@@ -23,7 +23,7 @@ We have implemented the following algorithms with customizable options, allowing
 
 ## Getting Started
 
-To use our optimization package, ensure you have Python installed on your system. Clone this repository and navigate to the project directory. Use the following command to solve an optimization problem:
+To use our optimization package, ensure you have Matlab installed on your system. Clone this repository and navigate to the project directory. Use the following command to solve an optimization problem:
 
 ```
 [x, f] = optSolver_JEKY(problem, method, options)
