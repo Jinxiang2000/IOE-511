@@ -15,18 +15,19 @@ options = [];
 
 [x1,f1] = optSolver_JEKY(problem,method,options);
 
+
 %% (2) Method 2: Gradient descent with Wolfe line search
 method.name = 'GradientDescentW';
 options = [];
 
 [x2,f2] = optSolver_JEKY(problem,method,options);
 
+
 %% (3) Method 3: Modified Newton with backtracking line search
 method.name = 'Newton';
 options = [];
 
 [x3,f3] = optSolver_JEKY(problem,method,options);
-
 
 
 %% (4) Method 4: Modified Newton with Wolfe line search
