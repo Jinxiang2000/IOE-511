@@ -36,16 +36,16 @@ options = [];
 [x4,f4] = optSolver_JEKY(problem,method,options);
 
 %% (5) Method 5: Trust region Newton with CG subproblem solve
-%method.name = 'TRNewtonCG';
-%options = [];
+method.name = 'TRNewtonCG';
+options = [];
 
-%[x5,f5] = optSolver_JEKY(problem,method,options);
+[x5,f5] = optSolver_JEKY(problem,method,options);
 
 %% (6) Method 6: SR1 quasi-Newton with CG subproblem solver
-%method.name = 'TRSR1CG';
-%options = [];
+method.name = 'TRSR1CG';
+options = [];
 
-%[x6,f6] = optSolver_JEKY(problem,method,options);
+[x6,f6] = optSolver_JEKY(problem,method,options);
 
 %% (7) Method 7:  BFGS quasi-Newton with backtracking line search
 method.name = 'BFGS';
@@ -61,16 +61,16 @@ options = [];
 [x8,f8] = optSolver_JEKY(problem,method,options);
 
 %% (9) Method 9: DFP quasi-Newton with backtracking line search
-%method.name = 'DFP';
-%options = [];
+method.name = 'DFP';
+options = [];
 
-%[x9,f9] = optSolver_JEKY(problem,method,options);
+[x9,f9] = optSolver_JEKY(problem,method,options);
 
 %% (10) Method 10:  DFP quasi-Newton with Wolfe line search
-%method.name = 'DFPW';
-%options = [];
+method.name = 'DFPW';
+options = [];
 
-%[x10,f10] = optSolver_JEKY(problem,method,options);
+[x10,f10] = optSolver_JEKY(problem,method,options);
 
 
 

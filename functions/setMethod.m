@@ -20,7 +20,7 @@ function [method] = setMethod(method)
   switch method.name
     case {'GradientDescent', 'Newton', 'BFGS', 'DFP', 'L_BFGS'}
         if ~isfield(method.options, 'alpha_0')
-            method.options.alpha_0 = 1.0;
+            method.options.alpha_0 = 10.0;
         end
         if ~isfield(method.options, 'tau')
             method.options.tau = 0.5;
@@ -39,23 +39,24 @@ function [method] = setMethod(method)
         if ~isfield(method.options, 'c_2_ls')
             method.options.c_2_ls = 1e-2;
         end
-   %{
     case {'TRNewtonCG', 'TRSR1CG'}
         if ~isfield(method.options, 'c_1_tr')
-            method.options.c_1_tr = 1; %TBD
+            method.options.c_1_tr = 0.3; 
         end
         if ~isfield(method.options, 'c_2_tr')
-            method.options.c_2_tr = 1; %TBD
+            method.options.c_2_tr = 1; 
         end 
         if ~isfield(method.options, 'term_tol_CG')
-            method.options.term_tol_CG = 1; %TBD
+            method.options.term_tol_CG = 1e-6; 
         end
         if ~isfield(method.options, 'max_iterations_CG')
-            method.options.max_iterations_CG = 1; %TBD
-        end     
+            method.options.max_iterations_CG = 40; 
+        end
+        if ~isfield(method.options, 'delta_0')
+            method.options.delta_0 = 1; 
+        end   
     otherwise
         error('Method not implemented yet!');
-  %}
   end
    
 

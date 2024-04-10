@@ -23,7 +23,7 @@ function [x,f] = optSolver_JEKY(problem,method,options)
       case {'Newton', 'NewtonW'}
           H = problem.compute_H(x, problem);
       case {'TRNewtonCG', 'TRSR1CG'}
-          %TBD
+          H = problem.compute_H(x, problem);
       case {'BFGS', 'BFGSW'}
           H = eye(length(x));
       case {'L_BFGS', 'L_BFGSW'}
@@ -53,12 +53,10 @@ function [x,f] = optSolver_JEKY(problem,method,options)
             [x,f,g,H] = Newton(x,g,H,problem,method);
         case 'NewtonW'
             [x,f,g,H] = NewtonW(x,g,H,problem,method); 
-        %{    
         case 'TRNewtonCG'
-            [] = TRNewtonCG();
+            [x,f,g,H] = TRNewtonCG(x,g,H,problem,method);
         case 'TRSR1CG'
-            [] = TRSR1CG();  
-        %}
+            [x,f,g,H] = TRSR1CG(x,g,H,problem,method,options);
         case 'BFGS'
             [x,f,g,H] = BFGS(x,g,H,problem,method,options);
         case 'BFGSW'

@@ -2,7 +2,7 @@
 
 %% EXAMPLE CODE FOR CG
 
-function d_star = cg_tr(x, B, delta, term_tol_CG)
+function d_star = cg_tr(x, B, delta, term_tol_CG,problem)
     % CG Steihaug algorithm to solve the trust region subproblem
     % Inputs:
     % x - initial point
@@ -12,7 +12,7 @@ function d_star = cg_tr(x, B, delta, term_tol_CG)
 
     % Initialize
     z = zeros(size(x)); % Start at origin (no direction)
-    r = Q1_grad(x); % Initial residual
+    r = problem.compute_g(x); % Initial residual
     p = -r; % Initial direction
     if norm(r) < term_tol_CG
         d_star = z; % Early exit if gradient is too small
