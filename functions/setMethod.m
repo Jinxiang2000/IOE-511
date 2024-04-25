@@ -71,7 +71,7 @@ function [method] = setMethod(method)
             method.options.c_1_ls = 1e-4;
         end 
         if ~isfield(method.options, 'c_2_ls')
-            method.options.c_2_ls = 1e-2;
+            method.options.c_2_ls = 0.5;
         end
         
     case {'TRNewtonCG', 'TRSR1CG'}
