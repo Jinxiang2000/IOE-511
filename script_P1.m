@@ -76,6 +76,7 @@ options = [];
 
 %% BIG QUESTION: L-BFGS with backtracking line search
 method.name = 'L_BFGS';
+method.options.m = 3; 
 options = [];
 
 [x11,f11] = optSolver_JEKY(problem,method,options);

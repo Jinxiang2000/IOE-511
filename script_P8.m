@@ -72,3 +72,16 @@ method.name = 'DFPW';
 options = [];
 
 [x10,f10] = optSolver_JEKY(problem,method,options);
+
+%% BIG QUESTION: L-BFGS with backtracking line search
+method.name = 'L_BFGS';
+method.options.m = 10; 
+options = [];
+
+[x11,f11] = optSolver_JEKY(problem,method,options);
+
+%% BIG QUESTION: L-BFGS with Wolfe line search
+method.name = 'L_BFGSW';
+options = [];
+
+[x12,f12] = optSolver_JEKY(problem,method,options);
