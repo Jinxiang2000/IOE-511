@@ -13,10 +13,12 @@ function [x_new,f_new,g_new,H_new] = BFGS(x,g,H,problem,method,options)
   tau = method.options.tau; 
   c_1_ls = method.options.c_1_ls;
   alpha = BLS(x, g, alpha_0, tau, c_1_ls, d, problem);
+  %fprintf('Current Armijo line srearch step size: %.5f\n', alpha);
   
   x_new = x + alpha * d;
   g_new = problem.compute_g(x_new, problem);
   f_new = problem.compute_f(x_new, problem);
+
   s_k = x_new - x;
   y_k = g_new - g;
 
@@ -24,10 +26,11 @@ function [x_new,f_new,g_new,H_new] = BFGS(x,g,H,problem,method,options)
   if (s_k' * y_k) < options.term_tol * norm(s_k) * norm(y_k)
      % Skip the update
      H_new = H;
+     %fprintf('Skip update');
   else
      % BFGS update
-     rho = 1 / (y_k' * s_k);
+     rho = 1 / (s_k' * y_k);
      V = eye(length(x)) - rho * (s_k * y_k');
-     H_new = V' * H * V + rho * (s_k * s_k');
+     H_new = V * H * V' + rho * (s_k * s_k');
   end
 end

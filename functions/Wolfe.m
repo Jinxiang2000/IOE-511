@@ -37,10 +37,8 @@ function [alpha] = Wolfe(x, g, alpha_0, c_1_ls, c_2_ls, d, problem)
       end
 
       alpha = c * alpha_low + (1 - c) * alpha_high;
-      %fprintf('Current alpha: %.4f\n', alpha);
-
       if t > 1e3  % Set a maximum number of iterations
-          warning('Wolfe:MaxIterations', 'Maximum iterations exceeded in Wolfe line search.');
+          %warning('Wolfe:MaxIterations', 'Maximum iterations exceeded in Wolfe line search.');
           break;
       end
   end

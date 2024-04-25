@@ -18,7 +18,30 @@ function [method] = setMethod(method)
 
   % Initialize default parameters based on method name
   switch method.name
-    case {'GradientDescent', 'Newton', 'BFGS', 'DFP', 'L_BFGS'}
+    case {'GradientDescent', 'Newton', 'L_BFGS'}
+        if ~isfield(method.options, 'alpha_0')
+            method.options.alpha_0 = 1.0;
+        end
+        if ~isfield(method.options, 'tau')
+            method.options.tau = 0.5;
+        end
+        if ~isfield(method.options, 'c_1_ls')
+            method.options.c_1_ls = 1e-4;
+        end
+
+    case {'BFGS'}
+        if ~isfield(method.options, 'alpha_0')
+            method.options.alpha_0 = 1.0;
+        end
+        if ~isfield(method.options, 'tau')
+            method.options.tau = 0.5;
+        end
+        if ~isfield(method.options, 'c_1_ls')
+            method.options.c_1_ls = 1e-4;
+        end
+        
+
+    case {'DFP'}
         if ~isfield(method.options, 'alpha_0')
             method.options.alpha_0 = 10.0;
         end
@@ -29,7 +52,7 @@ function [method] = setMethod(method)
             method.options.c_1_ls = 1e-4;
         end
 
-    case {'GradientDescentW', 'NewtonW', 'BFGSW', 'DFPW', 'L_BFGSW'}
+    case {'GradientDescentW', 'NewtonW', 'BFGSW', 'L_BFGSW'}
         if ~isfield(method.options, 'alpha_0')
             method.options.alpha_0 = 1.0;
         end
@@ -39,6 +62,18 @@ function [method] = setMethod(method)
         if ~isfield(method.options, 'c_2_ls')
             method.options.c_2_ls = 1e-2;
         end
+
+    case {'DFPW'}
+        if ~isfield(method.options, 'alpha_0')
+            method.options.alpha_0 = 10.0;
+        end
+        if ~isfield(method.options, 'c_1_ls')
+            method.options.c_1_ls = 1e-4;
+        end 
+        if ~isfield(method.options, 'c_2_ls')
+            method.options.c_2_ls = 1e-2;
+        end
+        
     case {'TRNewtonCG', 'TRSR1CG'}
         if ~isfield(method.options, 'c_1_tr')
             method.options.c_1_tr = 0.3; 

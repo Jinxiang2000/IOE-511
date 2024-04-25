@@ -52,6 +52,6 @@ function [x_new,f_new,g_new,S,Y,rho] = L_BFGSW(x,g,S,Y,rho,problem,method,option
           rho = [rho, 1/(y'*s)];
       end
   else
-      warning('L_BFGS:SkippingUpdate', 'Skipping update due to insufficient curvature condition.');
+      %warning('L_BFGS:SkippingUpdate', 'Skipping update due to insufficient curvature condition.');
   end
 end

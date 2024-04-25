@@ -28,6 +28,6 @@ function [x_new,f_new,g_new,H_new] = BFGSW(x,g,H,problem,method,options)
      % BFGS update
      rho = 1 / (y_k' * s_k);
      V = eye(length(x)) - rho * (s_k * y_k');
-     H_new = V' * H * V + rho * (s_k * s_k');
+     H_new = V * H * V' + rho * (s_k * s_k');
   end
 end

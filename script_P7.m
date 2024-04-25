@@ -49,6 +49,7 @@ options = [];
 %% (7) Method 7:  BFGS quasi-Newton with backtracking line search
 method.name = 'BFGS';
 options = [];
+options.max_iterations = 1e5;
 
 [x7,f7] = optSolver_JEKY(problem,method,options);
 
@@ -74,7 +75,7 @@ options = [];
 
 %% BIG QUESTION: L-BFGS with backtracking line search
 method.name = 'L_BFGS';
-method.options.m = 3; 
+method.options.m = 10; 
 options = [];
 
 [x11,f11] = optSolver_JEKY(problem,method,options);

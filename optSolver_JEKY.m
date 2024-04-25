@@ -59,20 +59,26 @@ function [x,f] = optSolver_JEKY(problem,method,options)
             [x,f,g,H] = TRSR1CG(x,g,H,problem,method,options);
         case 'BFGS'
             [x,f,g,H] = BFGS(x,g,H,problem,method,options);
+            %fprintf('Current function value: %.5f\n', f);
         case 'BFGSW'
-            [x,f,g,H] = BFGSW(x,g,H,problem,method,options);    
+            [x,f,g,H] = BFGSW(x,g,H,problem,method,options);   
+            %fprintf('Current function value: %.5f\n', f);
         case 'DFP'
             [x, f, g, D] = DFP(x, g, D, problem, method, options);
         case 'DFPW'
             [x, f, g, D] = DFPW(x, g, D, problem, method, options);   
         case 'L_BFGS'
             [x,f,g,S,Y,rho] = L_BFGS(x,g,S,Y,rho,problem,method,options);   
+            %fprintf('Current function value: %.5f\n', f);
         case 'L_BFGSW'
-            [x,f,g,S,Y,rho] = L_BFGSW(x,g,S,Y,rho,problem,method,options);       
+            [x,f,g,S,Y,rho] = L_BFGSW(x,g,S,Y,rho,problem,method,options);   
+            %fprintf('Current function value: %.5f\n', f);
         otherwise
             error('Method not implemented yet!')
     end
     norm_g = norm(g,inf);
     k = k + 1;
   end
+
+  %fprintf('Final #iterations: %.0f (%s) \n', k, method.name);
 end
