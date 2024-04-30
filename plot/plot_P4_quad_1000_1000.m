@@ -40,7 +40,11 @@ method.name = 'L_BFGS';
 method.options.m = 7; 
 options = [];
 
+<<<<<<< HEAD
 [g_k_t_22] = optSolver_JEKY_analysis(problem,method,options);
+=======
+[f_k_t_22] = optSolver_JEKY_analysis(problem,method,options);
+>>>>>>> 165b0dbcc4ae1fe395eb67442a5900fb32fa23d0
 %% (2.3) Algorithm 2.1: L-BFGS with m = 11
 method.name = 'L_BFGS';
 method.options.m = 11; 
